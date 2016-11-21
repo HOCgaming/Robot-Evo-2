@@ -11,12 +11,24 @@ public class CameraBehaviour : MonoBehaviour
         myPartClass = gameObject.GetComponent<PartClass>();
         myCamera = gameObject.AddComponent<Camera>();
         myCamera.nearClipPlane = 0.1f;
+        myCamera.enabled = false;
 
     }
 
     void Update()
     {
+
+        /*
+        if(myPartClass.onAttach) {
+            myCamera.enabled = true;
+        }
+        if(myPartClass.onDetach) {
+            myCamera.enabled = false;
+        }
+        */
+
         if (myPartClass.getAttachmentStatus()) {
+
             if (Input.GetKeyDown(KeyCode.C)) { }
             if (Input.GetKeyDown(KeyCode.V)) { }
         }
