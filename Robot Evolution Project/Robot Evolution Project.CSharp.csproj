@@ -69,7 +69,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\World Behaviour Scripts\LevelController.cs" />
+    <Compile Include="Assets\Scripts\Runtime Scripts\Robot Parts\AttachmentPad.cs" />
+    <Compile Include="Assets\Scripts\Runtime Scripts\Robot Parts\PartClass.cs" />
+    <Compile Include="Assets\Scripts\Runtime Scripts\World Behaviour Scripts\LevelController.cs" />
+    <Compile Include="Assets\Scripts\Static Scripts\PartController.cs" />
     <Compile Include="Assets\SteamVR\Extras\SteamVR_GazeTracker.cs" />
     <Compile Include="Assets\SteamVR\Extras\SteamVR_LaserPointer.cs" />
     <Compile Include="Assets\SteamVR\Extras\SteamVR_Teleporter.cs" />
