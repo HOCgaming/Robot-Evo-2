@@ -26,6 +26,9 @@ public class PartClass : MonoBehaviour {
             case PartController.partTypes.ROTOR:
                 //gameObject.AddComponent<RotorBehaviour>();
                 break;
+            case PartController.partTypes.CAMERA:
+                gameObject.AddComponent<CameraBehaviour>();
+                break;
         }
     }
 
