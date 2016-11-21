@@ -8,11 +8,24 @@ public class PartClass : MonoBehaviour {
     [SerializeField] private bool attachmentStatus = false;
     public PartController.partTypes partType = new PartController.partTypes();
 
-    void Start() {
+    [SerializeField] private PartClass myRobotCore = null;
 
-        //The core of the robot is, by definition, already attached to the robot
-        if (getPartType() == PartController.partTypes.CORE) {
-            setAttachmentStatus(true);
+    void Start() {        
+
+        //add the right behaviour to the part
+        switch (partType) {
+            case PartController.partTypes.CORE:
+                gameObject.AddComponent<CoreBehaviour>();
+                break;
+            case PartController.partTypes.STRUCTURAL:
+                //gameObject.AddComponent<StructuralBehaviour>();
+                break;
+            case PartController.partTypes.WHEEL:
+                gameObject.AddComponent<WheelBehaviour>();
+                break;
+            case PartController.partTypes.ROTOR:
+                //gameObject.AddComponent<RotorBehaviour>();
+                break;
         }
     }
 
@@ -56,4 +69,10 @@ public class PartClass : MonoBehaviour {
     }
 
     public PartController.partTypes getPartType() { return partType; }
+
+    public PartClass getMyRobotCore() { return myRobotCore; }
+    public void setRobotCore(PartClass robotCore)
+    {
+        myRobotCore = robotCore;
+    }
 }

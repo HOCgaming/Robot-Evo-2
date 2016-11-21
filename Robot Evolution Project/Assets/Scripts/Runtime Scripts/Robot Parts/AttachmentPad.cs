@@ -53,6 +53,11 @@ public class AttachmentPad : MonoBehaviour {
 
         /* Vector3 diffVector = transform.forward + triggeredAttachPad.transform.forward;
         triggeredPartClass.transform.Rotate(diffVector); */
+
+        //set attachmentStatus
+        triggeredPartClass.setAttachmentStatus(true);
+        //set their robotCore correctly
+        triggeredPartClass.setRobotCore(myPartClass.getMyRobotCore());
     }
 
     /*GET AND SET METHODS
