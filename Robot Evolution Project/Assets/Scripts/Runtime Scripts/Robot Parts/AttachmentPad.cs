@@ -11,6 +11,7 @@ public class AttachmentPad : MonoBehaviour {
     [SerializeField] private GameObject myPart;
     private PartClass myPartClass;
     private Vector3 padToCentre;
+    private bool inUse;
     
 	void Start () {
 
@@ -20,6 +21,7 @@ public class AttachmentPad : MonoBehaviour {
 
         //set variable values
         padToCentre = -gameObject.transform.localPosition;
+        inUse = false;
 	
 	}
 	
@@ -28,21 +30,26 @@ public class AttachmentPad : MonoBehaviour {
 	}
 
     void OnTriggerEnter(Collider trigger) {
+
         //If collided with another attachment pad:
         if (trigger.GetComponent<AttachmentPad>() != null) {
-
-            //If we are attached...
-            if (myPartClass.getAttachmentStatus()) {
-                //...and they are NOT attached.
-                if (!trigger.GetComponent<AttachmentPad>().getPartClass().getAttachmentStatus()) {
-                    AttachThemToUs(trigger.GetComponent<AttachmentPad>(), trigger.GetComponent<AttachmentPad>().myPartClass);
-                } 
-                //...and they ARE attached.
-                else {
-                    if (debug) { Debug.Log("Cannot attach " + trigger.GetComponent<AttachmentPad>().getPart().name + " and " + myPart.name + " as both are attached to the robot already."); }
+            //provided neither are in use:
+            if(!getInUse() && !trigger.GetComponent<AttachmentPad>().getInUse()) {
+                //If we are attached...
+                if (myPartClass.getAttachmentStatus())
+                {
+                    //...and they are NOT attached.
+                    if (!trigger.GetComponent<AttachmentPad>().getPartClass().getAttachmentStatus())
+                    {
+                        AttachThemToUs(trigger.GetComponent<AttachmentPad>(), trigger.GetComponent<AttachmentPad>().myPartClass);
+                    }
+                    //...and they ARE attached.
+                    else
+                    {
+                        if (debug) { Debug.Log("Cannot attach " + trigger.GetComponent<AttachmentPad>().getPart().name + " and " + myPart.name + " as both are attached to the robot already."); }
+                    }
                 }
             }
-            
         }        
     }
 
@@ -58,6 +65,11 @@ public class AttachmentPad : MonoBehaviour {
         triggeredPartClass.setAttachmentStatus(true);
         //set their robotCore correctly
         triggeredPartClass.setRobotCore(myPartClass.getMyRobotCore());
+
+        //set use for both attachment pads
+        setInUse(true);
+        triggeredAttachPad.setInUse(true);
+
     }
 
     /*GET AND SET METHODS
@@ -68,4 +80,10 @@ public class AttachmentPad : MonoBehaviour {
     public GameObject getPart() { return myPart; }
     public PartClass getPartClass() { return myPartClass; }
     public Vector3 getPadToCentre() { return padToCentre; }
+
+    public bool getInUse() { return inUse; }
+    public void setInUse(bool status)
+    {
+        inUse = status;
+    }
 }

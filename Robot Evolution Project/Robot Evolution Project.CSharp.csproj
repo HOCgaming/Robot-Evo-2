@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Runtime Scripts\Robot Parts\AttachmentPad.cs" />
+    <Compile Include="Assets\Scripts\Runtime Scripts\Robot Parts\Part Behaviours\CameraBehaviour.cs" />
     <Compile Include="Assets\Scripts\Runtime Scripts\Robot Parts\Part Behaviours\CoreBehaviour.cs" />
     <Compile Include="Assets\Scripts\Runtime Scripts\Robot Parts\Part Behaviours\WheelBehaviour.cs" />
     <Compile Include="Assets\Scripts\Runtime Scripts\Robot Parts\PartClass.cs" />
