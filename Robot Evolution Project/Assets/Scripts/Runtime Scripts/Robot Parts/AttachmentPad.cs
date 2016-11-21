@@ -2,23 +2,61 @@
 using System.Collections;
 
 public class AttachmentPad : MonoBehaviour {
+    private bool debug = true;
 
     /* Parent to each part of the robot.
      * Handles the connection of parts, and their orientation.
      */
      
-    private GameObject myPart;
+    [SerializeField] private GameObject myPart;
     private PartClass myPartClass;
+    private Vector3 padToCentre;
     
 	void Start () {
 
         //Get references to this pad's part.
-        myPart = gameObject.GetComponentInChildren<PartClass>().gameObject;
-        myPartClass = gameObject.GetComponentInChildren<PartClass>();
+        myPart = gameObject.GetComponentInParent<PartClass>().gameObject;
+        myPartClass = gameObject.GetComponentInParent<PartClass>();
+
+        //set variable values
+        padToCentre = -gameObject.transform.localPosition;
 	
 	}
 	
 	void Update () {
 	
 	}
+
+    void OnTriggerEnter(Collider trigger) {
+        //If collided with another attachment pad:
+        if (trigger.GetComponent<AttachmentPad>() != null) {
+
+            //If we are attached...
+            if (myPartClass.getAttachmentStatus()) {
+                //...and they are NOT attached.
+                if (!trigger.GetComponent<AttachmentPad>().getPartClass().getAttachmentStatus()) {
+                    AttachThemToUs(trigger.GetComponent<AttachmentPad>(), trigger.GetComponent<AttachmentPad>().myPartClass);
+                } 
+                //...and they ARE attached.
+                else {
+                    if (debug) { Debug.Log("Cannot attach " + trigger.GetComponent<AttachmentPad>().getPart().name + " and " + myPart.name + " as both are attached to the robot already."); }
+                }
+            }
+            
+        }        
+    }
+
+    private void AttachThemToUs(AttachmentPad triggeredAttachPad, PartClass triggeredPartClass) {
+        triggeredPartClass.setPhysics(false);
+        triggeredPartClass.transform.position = gameObject.transform.position + triggeredAttachPad.getPadToCentre();
+    }
+
+    /*GET AND SET METHODS
+    ALSO KNOWN AS
+    "WOO I DO COMPUTER SCIENCE
+    LOOK AT ME" */
+
+    public GameObject getPart() { return myPart; }
+    public PartClass getPartClass() { return myPartClass; }
+    public Vector3 getPadToCentre() { return padToCentre; }
 }
