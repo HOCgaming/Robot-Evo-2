@@ -32,6 +32,16 @@ public class PartClass : MonoBehaviour {
         }
     }
 
+    /*
+    //detach myself, and any children
+    public void Dettach()
+    {
+        //first deal with my own problems, 'aight?
+        setAttachmentStatus(false);
+        OnDetach();
+    }
+    */
+
     public void setPhysics(bool status) {
         
         //if looking to add a rigidbody
@@ -59,7 +69,7 @@ public class PartClass : MonoBehaviour {
                 if (debug) { Debug.Log(gameObject.name + " does not have a rigidbody."); }
             }
         }
-    }
+    }    
 
     //when part attaches
     public void OnAttach()
