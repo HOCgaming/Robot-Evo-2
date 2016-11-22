@@ -21,4 +21,13 @@ public class WheelBehaviour : MonoBehaviour {
         }
 	
 	}
+
+    public void OnAttach()
+    {
+
+    }
+    public void OnDetach()
+    {
+
+    }
 }
