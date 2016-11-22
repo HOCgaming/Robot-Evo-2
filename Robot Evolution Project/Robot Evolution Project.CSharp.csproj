@@ -72,6 +72,7 @@
     <Compile Include="Assets\Scripts\Runtime Scripts\Robot Parts\AttachmentPad.cs" />
     <Compile Include="Assets\Scripts\Runtime Scripts\Robot Parts\Part Behaviours\CameraBehaviour.cs" />
     <Compile Include="Assets\Scripts\Runtime Scripts\Robot Parts\Part Behaviours\CoreBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Runtime Scripts\Robot Parts\Part Behaviours\RotorBehaviour.cs" />
     <Compile Include="Assets\Scripts\Runtime Scripts\Robot Parts\Part Behaviours\WheelBehaviour.cs" />
     <Compile Include="Assets\Scripts\Runtime Scripts\Robot Parts\PartClass.cs" />
     <Compile Include="Assets\Scripts\Runtime Scripts\World Behaviour Scripts\LevelController.cs" />

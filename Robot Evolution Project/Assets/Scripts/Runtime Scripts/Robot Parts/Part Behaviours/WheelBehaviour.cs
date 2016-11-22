@@ -4,7 +4,7 @@ using System.Collections;
 public class WheelBehaviour : MonoBehaviour {
 
     private PartClass myPartClass;
-    private const float WHEEL_TORQUE = 10;
+    private const float WHEEL_TORQUE = 2;
     
 	void Start () {
 
