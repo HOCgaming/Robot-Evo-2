@@ -61,6 +61,53 @@ public class PartClass : MonoBehaviour {
         }
     }
 
+    //when part attaches
+    public void OnAttach()
+    {
+        if(debug) { Debug.Log("Running attachment method"); }
+        switch (partType)
+        {
+            case PartController.partTypes.CORE:
+                gameObject.GetComponent<CoreBehaviour>().OnAttach();
+                break;
+            case PartController.partTypes.STRUCTURAL:
+                //gameObject.GetComponent<StructuralBehaviour>().OnAttach();
+                break;
+            case PartController.partTypes.WHEEL:
+                gameObject.GetComponent<WheelBehaviour>().OnAttach();
+                break;
+            case PartController.partTypes.ROTOR:
+                //gameObject.GetComponent<RotorBehaviour>().OnAttach();
+                break;
+            case PartController.partTypes.CAMERA:
+                gameObject.GetComponent<CameraBehaviour>().OnAttach();
+                break;
+        }
+    }
+
+    //when part detaches
+    public void OnDetach()
+    {
+        switch (partType)
+        {
+            case PartController.partTypes.CORE:
+                gameObject.GetComponent<CoreBehaviour>().OnDetach();
+                break;
+            case PartController.partTypes.STRUCTURAL:
+                //gameObject.GetComponent<StructuralBehaviour>().OnDetach();
+                break;
+            case PartController.partTypes.WHEEL:
+                gameObject.GetComponent<WheelBehaviour>().OnDetach();
+                break;
+            case PartController.partTypes.ROTOR:
+                //gameObject.GetComponent<RotorBehaviour>().OnDetach();
+                break;
+            case PartController.partTypes.CAMERA:
+                gameObject.GetComponent<CameraBehaviour>().OnDetach();
+                break;
+        }
+    }
+
     /* GET and SET methods for each property of the part.
      * Look, I'm being a good Computer Scientist...
      */
@@ -78,4 +125,5 @@ public class PartClass : MonoBehaviour {
     {
         myRobotCore = robotCore;
     }
+    
 }

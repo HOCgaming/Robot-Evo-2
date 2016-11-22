@@ -70,6 +70,10 @@ public class AttachmentPad : MonoBehaviour {
         setInUse(true);
         triggeredAttachPad.setInUse(true);
 
+        //run any OnAttach() behaviour
+        triggeredPartClass.OnAttach();
+        
+
     }
 
     /*GET AND SET METHODS

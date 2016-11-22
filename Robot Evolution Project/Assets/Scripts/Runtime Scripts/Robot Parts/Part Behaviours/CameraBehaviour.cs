@@ -18,21 +18,21 @@ public class CameraBehaviour : MonoBehaviour
     void Update()
     {
 
-        /*
-        if(myPartClass.onAttach) {
-            myCamera.enabled = true;
-        }
-        if(myPartClass.onDetach) {
-            myCamera.enabled = false;
-        }
-        */
-
         if (myPartClass.getAttachmentStatus()) {
 
             if (Input.GetKeyDown(KeyCode.C)) { }
             if (Input.GetKeyDown(KeyCode.V)) { }
         }
             
+    }
+
+    public void OnAttach()
+    {
+        myCamera.enabled = true;
+    }
+    public void OnDetach()
+    {
+        myCamera.enabled = false;
     }
 
     /* GET AND SET

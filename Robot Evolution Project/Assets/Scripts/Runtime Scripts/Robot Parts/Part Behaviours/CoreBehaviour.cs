@@ -23,4 +23,13 @@ public class CoreBehaviour : MonoBehaviour {
 	void Update () {
 	
 	}
+
+    public void OnAttach()
+    {
+
+    }
+    public void OnDetach()
+    {
+
+    }
 }
