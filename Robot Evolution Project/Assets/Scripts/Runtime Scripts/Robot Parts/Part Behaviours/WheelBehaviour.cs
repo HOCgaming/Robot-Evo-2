@@ -4,6 +4,7 @@ using System.Collections;
 public class WheelBehaviour : MonoBehaviour {
 
     private PartClass myPartClass;
+    private const float WHEEL_TORQUE = 10;
     
 	void Start () {
 
@@ -16,8 +17,16 @@ public class WheelBehaviour : MonoBehaviour {
         //if the part is attached...
         if(myPartClass.getAttachmentStatus())
         {
-            if(Input.GetKey(KeyCode.A)) { }
-            if(Input.GetKey(KeyCode.D)) { }
+            if (myPartClass.getMyRobotCore().GetComponent<Rigidbody>() != null)
+            {
+                Rigidbody coreBody = myPartClass.getMyRobotCore().GetComponent<Rigidbody>();
+                if (Input.GetKey(KeyCode.A)) { coreBody.AddTorque(coreBody.transform.forward * WHEEL_TORQUE); }
+                if (Input.GetKey(KeyCode.D)) { coreBody.AddTorque(-coreBody.transform.forward * WHEEL_TORQUE); }
+                if (Input.GetKey(KeyCode.W)) { coreBody.AddTorque(coreBody.transform.up * WHEEL_TORQUE); }
+                if (Input.GetKey(KeyCode.S)) { coreBody.AddTorque(-coreBody.transform.up * WHEEL_TORQUE); }
+            }
+
+            
         }
 	
 	}
