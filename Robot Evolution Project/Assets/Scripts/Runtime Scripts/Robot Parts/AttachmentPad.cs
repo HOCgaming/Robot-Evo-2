@@ -54,8 +54,7 @@ public class AttachmentPad : MonoBehaviour {
     }
 
     private void AttachThemToUs(AttachmentPad triggeredAttachPad, PartClass triggeredPartClass) {
-        triggeredPartClass.setPhysics(false);
-        triggeredPartClass.transform.position = gameObject.transform.position + (gameObject.transform.up * triggeredAttachPad.getPadToCentre().magnitude);
+        triggeredPartClass.setPhysics(false);        
         triggeredPartClass.transform.parent = myPart.transform;
 
         /* Vector3 diffVector = transform.forward + triggeredAttachPad.transform.forward;
@@ -72,7 +71,9 @@ public class AttachmentPad : MonoBehaviour {
 
         //run any OnAttach() behaviour
         triggeredPartClass.OnAttach();
-        
+
+        triggeredPartClass.transform.position = gameObject.transform.position + (gameObject.transform.up * triggeredAttachPad.getPadToCentre().magnitude);
+
 
     }
 

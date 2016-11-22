@@ -36,13 +36,7 @@ public class RotorBehaviour : MonoBehaviour
         //if the part is attached...
         if (myPartClass.getAttachmentStatus())
         {
-            if (myPartClass.getMyRobotCore().GetComponent<Rigidbody>() != null)
-            {
-                Rigidbody coreBody = myPartClass.getMyRobotCore().GetComponent<Rigidbody>();
-                if (Input.GetKey(KeyCode.Space)) { transform.Rotate(myPartClass.transform.up, Time.deltaTime * ROTOR_VEL); }
-            }
-
-
+            if (Input.GetKey(KeyCode.Space)) { transform.Rotate(myPartClass.transform.up, Time.deltaTime * ROTOR_VEL); }
         }
     }
 
