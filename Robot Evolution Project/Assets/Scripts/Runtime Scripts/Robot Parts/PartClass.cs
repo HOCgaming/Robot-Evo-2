@@ -24,7 +24,7 @@ public class PartClass : MonoBehaviour {
                 gameObject.AddComponent<WheelBehaviour>();
                 break;
             case PartController.partTypes.ROTOR:
-                //gameObject.AddComponent<RotorBehaviour>();
+                gameObject.AddComponent<RotorBehaviour>();
                 break;
             case PartController.partTypes.CAMERA:
                 gameObject.AddComponent<CameraBehaviour>();
@@ -87,7 +87,7 @@ public class PartClass : MonoBehaviour {
                 gameObject.GetComponent<WheelBehaviour>().OnAttach();
                 break;
             case PartController.partTypes.ROTOR:
-                //gameObject.GetComponent<RotorBehaviour>().OnAttach();
+                gameObject.GetComponent<RotorBehaviour>().OnAttach();
                 break;
             case PartController.partTypes.CAMERA:
                 gameObject.GetComponent<CameraBehaviour>().OnAttach();
@@ -110,7 +110,7 @@ public class PartClass : MonoBehaviour {
                 gameObject.GetComponent<WheelBehaviour>().OnDetach();
                 break;
             case PartController.partTypes.ROTOR:
-                //gameObject.GetComponent<RotorBehaviour>().OnDetach();
+                gameObject.GetComponent<RotorBehaviour>().OnDetach();
                 break;
             case PartController.partTypes.CAMERA:
                 gameObject.GetComponent<CameraBehaviour>().OnDetach();
